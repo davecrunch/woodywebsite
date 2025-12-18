@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			description: 'Vlogs and fun videos with my two best friends',
 			link: 'https://youtube.com/playlist?list=PL-E7_ED43IO6F3tDrD04z-T9WJOSI1vvm&si=LkqJ2E4AgjMnhHXE',
 			images: [
-                { type: "video", src: "../static/pics/swagtrailer.mov" },
                 { type: "image", src: "../static/pics/swag8.JPG" },
                 { type: "image", src: "../static/pics/swag5.JPG" },
                 { type: "image", src: "../static/pics/swag2.JPG" },
