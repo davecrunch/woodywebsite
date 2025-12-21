@@ -80,12 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
 			link: 'https://youtube.com/playlist?list=PL-E7_ED43IO6F3tDrD04z-T9WJOSI1vvm&si=LkqJ2E4AgjMnhHXE',
 			images: [
                 { type: "image", src: "../static/pics/swag8.JPG" },
-                { type: "image", src: "../static/pics/swag5.JPG" },
-                { type: "image", src: "../static/pics/swag2.JPG" },
-                { type: "image", src: "../static/pics/swag6.JPG" },
+                { type: "image", src: "../static/pics/swag5.jpg" },
+                { type: "image", src: "../static/pics/swag2.jpg" },
+                { type: "image", src: "../static/pics/swag6.jpg" },
                 { type: "image", src: "../static/pics/swag10.JPG" },
                 { type: "image", src: "../static/pics/swag11.JPG" },
-                { type: "image", src: "../static/pics/swag4.JPG" },
+                { type: "image", src: "../static/pics/swag4.jpg" },
             ]
 
 		},
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			description: 'Contribution to the Langchain open-source AI project with bug fixes - 17313 Foundations of Software Engineering Final Team Project',
 			link: 'https://github.com/langchain-ai/langchain/pull/33989',
 			images: [
-				{type: "image", src: "../static/pics/tech/langchain.JPEG"},
+				{type: "image", src: "../static/pics/tech/langchain.jpeg"},
 				{type: "image", src: "../static/pics/tech/langchain2.png"}
 			]
 		},
