@@ -93,12 +93,14 @@ body {
 @media (min-width: 1400px) {
   :root { --content-max-width: 1400px; --content-horizontal-padding: 36px; }
   .gallery-grid img, .tech-grid img { height: 360px; border-radius: 4px;}
+  .gallery-item.smaller img { height: 280px; }
   .modal { width: min(1200px, calc(100% - 96px)); height: min(650px, calc(100vh - 80px)); }
 }
 
 @media (min-width: 1800px) {
   :root { --content-max-width: 1600px; --content-horizontal-padding: 48px; }
   .gallery-grid img, .tech-grid img { height: 420px; }
+  .gallery-item.smaller img { height: 320px; }
   .modal { width: min(1400px, calc(100% - 96px)); height: min(700px, calc(100vh - 80px)); }
 }
 
@@ -145,6 +147,7 @@ body {
 }
 
 .gallery-grid img, .tech-grid img { width:100%; height:320px; object-fit:cover; display:block; }
+.gallery-item.smaller img { height: 410px; }
 .gallery-item { cursor: pointer; overflow: hidden; }
 .gallery-item img { transition: transform 220ms ease; }
 .gallery-item:hover img { transform: scale(1.03); }
@@ -203,6 +206,7 @@ html, body { overflow-x: hidden; }
 
 /* Utility */
 .muted { color: #555; }
+.hidden { display: none; }
 * {
     font-family: "Kaisei Decol", serif;
     font-weight: 400;

@@ -43,9 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			description: 'Short Film w/ Rylee Stanton, Original Music Compostion and Recording by Woody Li',
 			link: 'https://drive.google.com/file/d/1U2TZFXkN-wB0jgqZsQnp7h0cpLMVNlhB/view?usp=drive_link',
 			images: [
-				'https://picsum.photos/seed/p2a/1200/900',
-				'https://picsum.photos/seed/p2b/1200/900',
-				'https://picsum.photos/seed/p2c/1200/900'
+				{type: "image", src: "../static/pics/fading/4.png"},
+				{type: "image", src: "../static/pics/fading/1.png"},
+				{type: "image", src: "../static/pics/fading/2.png"},
+				{type: "image", src: "../static/pics/fading/3.png"},
 			]
 		},
 		{
@@ -53,8 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			description: 'Short Film w/ Anastasia Ramirez, Original Music Compostion and Recording by Woody Li',
 			link: 'https://www.youtube.com/watch?v=_e9SgOSqp10',
 			images: [
-				'https://picsum.photos/seed/p3a/1200/900',
-				'https://picsum.photos/seed/p3b/1200/900'
+				{type: "image", src: "../static/pics/buddy/3.png"},
+				{type: "image", src: "../static/pics/buddy/1.png"},
+				{type: "image", src: "../static/pics/buddy/2.png"},
+				{type: "image", src: "../static/pics/buddy/4.png"},
 			]
 		},
         {
@@ -62,12 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			description: 'Classic / Indie Rock Band based in Pittsburgh, PA. I play bass',
 			link: 'https://www.instagram.com/halfpast7band/',
 			images: [
-				{type: "image", src: "../static/pics/hp72.JPG"},
 				{type: "image", src: "../static/pics/hp73.JPG"},
+				{type: "image", src: "../static/pics/hp77.JPG"},
+				{type: "image", src: "../static/pics/hp71.JPG"},
                 {type: "image", src: "../static/pics/hp75.JPG"},
                 {type: "image", src: "../static/pics/hp78.JPG"},
                 {type: "image", src: "../static/pics/hp74.JPG"},
-                {type: "image", src: "../static/pics/hp71.JPG"},
+				{type: "image", src: "../static/pics/hp72.JPG"},
 			]
 		},
         {
@@ -87,11 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		},
         {
 			title: "Scotch'n'Soda",
-			description: 'Pit orchestra performer / Sound tech for student theater group at CMU',
+			description: 'Pit orchestra performer / Sound tech for student theater group at CMU. Performed in / produced for shows like The Little Mermaid and Oklahoma.',
 			link: 'https://www.snstheatre.org/',
 			images: [
-				'/static/placeholder.JPG',
-                'https://picsum.photos/seed/p3b/1200/900'
+				{type: "image", src: "../static/pics/sns/1.JPG"},
+				{type: "image", src: "../static/pics/sns/4.JPG"},
+				{type: "image", src: "../static/pics/sns/2.jpeg"},
+				{type: "image", src: "../static/pics/sns/3.jpeg"},
 			]
 		},
 
@@ -99,28 +105,29 @@ document.addEventListener('DOMContentLoaded', () => {
 		{
 			title: 'Langchain Open Source (In progress)',
 			description: 'Contribution to the Langchain open-source AI project with bug fixes - 17313 Foundations of Software Engineering Final Team Project',
-			link: '#',
+			link: 'https://github.com/langchain-ai/langchain/pull/33989',
 			images: [
-				'https://picsum.photos/seed/t1a/1200/900',
-				'https://picsum.photos/seed/t1b/1200/900'
+				{type: "image", src: "../static/pics/tech/langchain.JPEG"},
+				{type: "image", src: "../static/pics/tech/langchain2.png"}
 			]
 		},
 		{
-			title: 'Database Lifecycle Project (In Progress)',
+			title: 'Database Lifecycle Project',
 			description: 'Recreating Duolingo\'s database schema from user stories to physical models to queries, using PostgreSQL - 67262 Database Design and Development Final Project',
-			link: '#',
+			link: 'https://github.com/davecrunch/Database-Project-262',
 			images: [
-				'https://picsum.photos/seed/t2a/1200/900',
-				'https://picsum.photos/seed/t2b/1200/900'
+				{type: "image", src: "../static/pics/tech/duolingo.jpg"},
+				{type: "image", src: "../static/pics/tech/database.png"}
 			]
 		},
 		{
 			title: 'Duquesne Incline Web Development',
 			description: 'Building an updated and interactive website for Pittsburgh\'s historic Duquesne Incline - 67250 Information Systems Milleux Web Dev Project',
-			link: '#',
+			link: 'https://davecrunch.github.io/DuquesneIncline/',
 			images: [
-				'https://picsum.photos/seed/t3a/1200/900',
-				'https://picsum.photos/seed/t3b/1200/900'
+				{type: "image", src: "../static/pics/tech/logo.png"},
+				{type: "image", src: "../static/pics/tech/duquesne2.png"},
+				{type: "image", src: "../static/pics/tech/duquesne3.png"}
 			]
 		},
         {
@@ -141,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			]
 		},
         {
-			title: 'Human Centered Design Bakeoff',
+			title: 'Human Centered Software Design Bakeoff',
 			description: 'Desigining, Coding, and Testing solutions to a button clicking task for maximum efficiency - 05391 Designing Human Centered Software Team Project',
 			link: '#',
 			images: [
@@ -152,10 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
         {
 			title: 'Selection Sort Algorithm Visualization',
 			description: 'Coding a visualization of the selection sort algorithm in Python - 15112 Fundamentals of Programming Final Project',
-			link: '#',
+			link: 'https://drive.google.com/file/d/1l7giDqlEtAsypB7GlmJ4rbpJJVP_76Ha/view?usp=drive_link',
 			images: [
-				'https://picsum.photos/seed/t1a/1200/900',
-				'https://picsum.photos/seed/t1b/1200/900'
+				{type: "image", src: "../static/pics/tech/112.png"},
 			]
 		},
 	];
