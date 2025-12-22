@@ -30,8 +30,8 @@ body {
 .hero { display:flex; flex-direction:column; min-height: calc(100vh - 0px); }
 .hero-left { width:100%; }
 .hero-left img { width:100%; height:auto; display:block; object-fit:cover; }
-.hero-right { padding: 36px var(--content-horizontal-padding); }
-.about h1 { font-size:2.25rem; margin:0 0 16px 0; }
+.hero-right { margin-top: 1px; padding: 12px var(--content-horizontal-padding);  }
+.about h2 { font-size:1.5rem; margin:0 0 2px 0; padding: 0 0 0 0; }
 .about p { line-height:1.6; max-width: 36ch; }
 .portfolio-cta {
   background: #f5e9b6;
@@ -84,7 +84,7 @@ body {
   .hero { flex-direction: row; height: 100vh; overflow: hidden; }
   .hero-left { width: 50%; height: 100vh; overflow: hidden; position: sticky; top: 0; }
   .hero-left img { height: 100%; width: 100%; object-fit: cover; }
-  .hero-right { width: 50%; padding: 80px var(--content-horizontal-padding); display:flex; flex-direction:column; justify-content:flex-start; overflow-y: auto; }
+  .hero-right { width: 50%; padding: 20px var(--content-horizontal-padding); display:flex; flex-direction:column; justify-content:flex-start; overflow-y: auto; }
   .about h1 { font-size: 3rem; }
   .site-header .logo { font-size: 1.2rem; }
 }
