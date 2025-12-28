@@ -29,13 +29,13 @@ body {
 /* Hero layout - mobile-first */
 .hero { display:flex; flex-direction:column; min-height: calc(100vh - 0px); }
 .hero-left { width:100%; }
-.hero-left img { width:100%; height:auto; display:block; object-fit:cover; }
+.hero-left img { width:100%; height:auto; display:block; }
 .hero-right { margin-top: 1px; padding: 12px var(--content-horizontal-padding);  }
 .about h2 { font-size:1.5rem; margin:0 0 2px 0; padding: 0 0 0 0; }
 .about p { line-height:1.6; max-width: 36ch; }
 .portfolio-cta {
   background: #f5e9b6;
-  padding: 50px var(--content-horizontal-padding);
+  padding: 33px var(--content-horizontal-padding);
   border-radius: 0px;
   display:flex; justify-content:center; align-items:center; margin: 30px 0;
   /*box-shadow: 0 6px 18px rgba(0,0,0,0.08);*/
@@ -47,6 +47,19 @@ body {
   margin: 10px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.portfolio-cta button a {
+  text-decoration: none;
+  color: rgb(32,32,32);
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.portfolio-cta button:hover {
+  background: rgb(249, 219, 169);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
 }
 
 /* break CTA out of hero-right padding to remove left/right margins */
@@ -82,9 +95,9 @@ body {
 /* Desktop larger screens */
 @media (min-width: 900px) {
   .hero { flex-direction: row; height: 100vh; overflow: hidden; }
-  .hero-left { width: 50%; height: 100vh; overflow: hidden; position: sticky; top: 0; }
+  .hero-left { width: 45%; height: 100vh; overflow: hidden; position: sticky; top: 0; }
   .hero-left img { height: 100%; width: 100%; object-fit: cover; }
-  .hero-right { width: 50%; padding: 20px var(--content-horizontal-padding); display:flex; flex-direction:column; justify-content:flex-start; overflow-y: auto; }
+  .hero-right { width: 55%; padding: 20px var(--content-horizontal-padding); display:flex; flex-direction:column; justify-content:flex-start; overflow-y: auto; }
   .about h1 { font-size: 3rem; }
   .site-header .logo { font-size: 1.2rem; }
 }
