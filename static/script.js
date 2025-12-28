@@ -30,12 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // fading tides / LG / buddy bot / ad? / hp7 / 313 langchain / database duolingo / scotch / swagvlogs / work (frutful / recording services / pho?)
 	const projects = [
 		{
-			title: 'Lunar Gala',
-			description: 'Sound Design and Production for Joie de Vivre, fashion line at Lunar Gala 2026 (In progress)',
+			title: 'Lunar Gala (In Progress)',
+			description: 'Sound Design and Production for Joie de Vivre, fashion line at Lunar Gala 2026',
 			link: 'https://www.lunargala.org/',
 			images: [
-				'https://picsum.photos/seed/p1a/1200/900',
-				'https://picsum.photos/seed/p1b/1200/900'
+				{type: "image", src: "../static/pics/lg.jpg"},
 			]
 		},
 		{
@@ -103,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // langchain / duolingo / duquense web / voltx database / ICM / DHCS bakeoff 3 / 122 / 112
 		{
-			title: 'Langchain Open Source (In progress)',
+			title: 'Langchain Open Source',
 			description: 'Contribution to the Langchain open-source AI project with bug fixes - 17313 Foundations of Software Engineering Final Team Project',
 			link: 'https://github.com/langchain-ai/langchain/pull/33989',
 			images: [
