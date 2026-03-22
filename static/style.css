@@ -131,10 +131,55 @@ body {
 }
 
 .modal-details { width: 34%; padding: 28px; overflow-y:auto; height: 100%; }
-.modal .close { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); border: none; padding: 8px 10px; border-radius: 6px; cursor: pointer; }
-.modal .prev, .modal .next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; padding: 8px 10px; border-radius: 4px; cursor: pointer; }
-.modal .prev { left: 10px; }
-.modal .next { right: 10px; }
+.modal .close,
+.modal .prev,
+.modal .next {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(246, 241, 219, 0.28);
+  border-radius: 999px;
+  background: rgba(245, 233, 182, 0.74);
+  color: rgb(32, 32, 32);
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.modal .prev,
+.modal .next { top: 50%; transform: translateY(-50%); }
+.modal .prev { left: 12px; }
+.modal .next { right: 12px; }
+.modal .close { top: 12px; right: 12px; }
+
+.modal .close svg,
+.modal .prev svg,
+.modal .next svg {
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+}
+
+.modal .close:hover,
+.modal .prev:hover,
+.modal .next:hover,
+.modal .close:focus-visible,
+.modal .prev:focus-visible,
+.modal .next:focus-visible {
+  transform: translateY(-50%) scale(1.04);
+  background: rgba(245, 233, 182, 0.94);
+  border-color: rgba(157, 142, 9, 0.58);
+  color: rgb(32, 32, 32);
+  outline: none;
+}
+
+.modal .close:hover,
+.modal .close:focus-visible {
+  transform: scale(1.04);
+}
 
 @media (max-width: 899px) {
   .modal { flex-direction: column; width: calc(100% - 32px); height: calc(100vh - 64px); }
@@ -160,6 +205,7 @@ body {
 }
 
 .gallery-grid img, .tech-grid img { width:100%; height:320px; object-fit:cover; display:block; }
+.gallery-grid img.lunar-index-photo { object-position: 50% 35%; }
 .gallery-item.smaller img { height: 410px; }
 .gallery-item { cursor: pointer; overflow: hidden; }
 .gallery-item img { transition: transform 220ms ease; }

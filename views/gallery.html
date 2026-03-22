@@ -30,12 +30,12 @@
 			<h2>Creative Works</h2>
       
 			<section class="gallery-grid">
+				<div class="gallery-item" data-project-index="0"><img class="lunar-index-photo" src="../static/pics/lg/jdv1.jpg" alt="Lunar Gala Project"></div>
+				<div class="gallery-item" data-project-index="3"><img src="../static/pics/hp73.JPG" alt="HalfPast7"></div>
 				<div class="gallery-item" data-project-index="1"><img src="../static/pics/fading/4.png" alt="Fading Tides"></div>
 				<div class="gallery-item" data-project-index="2"><img src="../static/pics/buddy/3.png" alt="BuddyBot"></div>
-				<div class="gallery-item" data-project-index="3"><img src="../static/pics/hp73.JPG" alt="HalfPast7"></div>
 				<div class="gallery-item" data-project-index="4"><img src="../static/pics/swag7.JPG" alt="SwagVlogs"></div>
 				<div class="gallery-item" data-project-index="5"><img src="../static/pics/sns/1.JPG" alt="Scotch'n'Soda"></div>
-				<div class="gallery-item" data-project-index="0"><img src="../static/pics/lg.jpg" alt="Lunar Gala Project"></div>
 			</section>
 
 
@@ -73,6 +73,9 @@
 						<p><strong>Music Metadata Intern @ <a href="https://frutful.space">Frutful</a></strong> <br> Los Angeles, CA (Remote), Sept. - Dec. 2025 <br>
 						Manages and organizes music catalogue and metadata in DISCO. Works with playlists to pitch to music supervisors under Frutful, a sync / record agency</p>
 						
+						<p><strong>Studio & Teaching Assistant @ Vlahakis Recording Studio</strong> <br> Pittsburgh, PA, Jan. 2026 - Current<br>
+						Assists in instructing Professor Riccardo Schulz’s audio recording courses, topics include using Pro Tools and handling audio recording equipment</p>
+
 						<p><strong>Recording Crew @ <a href="https://www.cmu.edu/cfa/music/current-students/guidelines-forms/recording.html">Recording Services at Carneige Mellon</a></strong> <br> Pittsburgh, PA, Sept. 2023 - Current<br>
 						Records audio and video for music performances in the CMU community. Manages AV and stage equipment, records with Pro Tools</p>
 						
@@ -135,11 +138,24 @@
 	<div class="modal-overlay" id="gallery-modal" aria-hidden="true">
 		<div class="modal" role="dialog" aria-modal="true">
 			<div class="modal-carousel">
-				<button class="prev">‹</button>
+				<button class="prev" aria-label="Previous image" title="Previous image">
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+						<path d="M15 6L9 12l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</button>
 				<img id="modal-image" src="https://picsum.photos/seed/101/1200/800" alt="Modal image">
                 <video id="modal-video" controls style="display:none" playsinline muted loop></video>
-				<button class="next">›</button>
-				<button class="close">×</button>
+				<button class="next" aria-label="Next image" title="Next image">
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+						<path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</button>
+				<button class="close" aria-label="Close modal" title="Close modal">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+						<path d="M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+						<path d="M6 6l12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+					</svg>
+				</button>
 			</div>
 			<div class="modal-details">
 				<h2 id="modal-title">Project Title</h2>

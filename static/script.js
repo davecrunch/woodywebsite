@@ -22,19 +22,28 @@ document.addEventListener('DOMContentLoaded', () => {
 	const modalTitle = document.getElementById('modal-title');
 	const modalDescription = document.getElementById('modal-description');
 	const modalLink = document.getElementById('modal-link');
+	const modalCarousel = modalOverlay.querySelector('.modal-carousel');
 	const btnClose = modalOverlay.querySelector('.close');
 	const btnPrev = modalOverlay.querySelector('.prev');
 	const btnNext = modalOverlay.querySelector('.next');
+	if (btnPrev) btnPrev.style.zIndex = '6';
+	if (btnNext) btnNext.style.zIndex = '6';
+	if (btnClose) btnClose.style.zIndex = '6';
 
 	// Minimal placeholder projects with a few images each
     // fading tides / LG / buddy bot / ad? / hp7 / 313 langchain / database duolingo / scotch / swagvlogs / work (frutful / recording services / pho?)
 	const projects = [
 		{
-			title: 'Lunar Gala (In Progress)',
+			title: 'Lunar Gala 2026 - Joie de Vivre',
 			description: 'Sound Design and Production for Joie de Vivre, fashion line at Lunar Gala 2026',
-			link: 'https://www.lunargala.org/',
+			link: 'https://www.2026.lunargala.org/people',
 			images: [
-				{type: "image", src: "../static/pics/lg.jpg"},
+				{type: "image", src: "../static/pics/lg/jdv1.jpg", position: "50% 38%"},
+				{type: "image", src: "../static/pics/lg/jdv2.jpg", position: "50% 27%"},
+				{type: "image", src: "../static/pics/lg/jdv4.jpg", position: "50% 38%"},
+				{type: "image", src: "../static/pics/lg/ableton.png"},
+				{type: "image", src: "../static/pics/lg/musescore.png"},
+				{type: "image", src: "../static/pics/lg/headshot.png", fit: "contain", bg: "#ffffff", position: "50% 50%"},
 			]
 		},
 		{
@@ -167,6 +176,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	let currentProject = null;
 	let currentImageIndex = 0;
+	let mediaRequestId = 0;
+	let isSliding = false;
+	const slideTransitionMs = 320;
+
+	const cleanupCarouselClones = () => {
+		if (!modalCarousel) return;
+		modalCarousel.querySelectorAll('.modal-slide-clone').forEach(node => node.remove());
+	};
+
+	const applyImageStyles = (imgEl, media) => {
+		imgEl.style.objectFit = media.fit || "cover";
+		imgEl.style.backgroundColor = media.bg || "transparent";
+		imgEl.style.objectPosition = media.position || "50% 50%";
+	};
 
 	const openModal = (projectIndex) => {
 		currentProject = projects[projectIndex];
@@ -187,6 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.setAttribute('aria-hidden', 'true');
         currentProject = null;
         currentImageIndex = 0;
+		mediaRequestId += 1;
+		isSliding = false;
+		cleanupCarouselClones();
 
         // Stop and reset video
         if (modalVideo) {
@@ -200,17 +226,28 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalImage) {
             modalImage.style.display = "block"; // optional default
             modalImage.src = "";
+			modalImage.style.transform = "";
+			modalImage.style.transition = "";
+			modalImage.onload = null;
+			modalImage.onerror = null;
         }
     };
 
 
-	const showMedia = (index) => {
+	const showMedia = (index, directionHint = 0) => {
         if (!currentProject) return;
+		if (isSliding && directionHint !== 0) return;
+		const requestId = ++mediaRequestId;
 
         currentImageIndex = (index + currentProject.images.length) % currentProject.images.length;
-        const media = currentProject.images[currentImageIndex];
+		const rawMedia = currentProject.images[currentImageIndex];
+		const media = (typeof rawMedia === 'string') ? { type: "image", src: rawMedia } : rawMedia;
+		const direction = directionHint;
 
         if (media.type === "video") {
+			cleanupCarouselClones();
+			modalImage.style.transform = "";
+			modalImage.style.transition = "";
             modalImage.style.display = "none";
             modalImage.src = "";
 
@@ -233,7 +270,85 @@ document.addEventListener('DOMContentLoaded', () => {
             modalVideo.src = "";
             modalVideo.style.display = "none";
 
-            modalImage.src = media.src;
+			const nextSrc = media.src;
+			const preloader = new Image();
+			preloader.onload = () => {
+				if (requestId !== mediaRequestId) return;
+
+				const canAnimate = modalCarousel && modalImage.src && modalImage.style.display !== "none" && direction !== 0;
+				if (!canAnimate) {
+					cleanupCarouselClones();
+					applyImageStyles(modalImage, media);
+					modalImage.style.transform = "";
+					modalImage.style.transition = "";
+					modalImage.src = nextSrc;
+					return;
+				}
+
+				cleanupCarouselClones();
+				const incoming = modalImage.cloneNode(false);
+				incoming.removeAttribute('id');
+				incoming.classList.add('modal-slide-clone');
+				incoming.style.position = 'absolute';
+				incoming.style.inset = '0';
+				incoming.style.width = '100%';
+				incoming.style.height = '100%';
+				incoming.style.display = 'block';
+				incoming.style.zIndex = '2';
+				incoming.style.pointerEvents = 'none';
+				incoming.style.transition = `transform ${slideTransitionMs}ms ease`;
+				incoming.style.transform = direction > 0 ? 'translateX(100%)' : 'translateX(-100%)';
+				applyImageStyles(incoming, media);
+				incoming.src = nextSrc;
+
+				modalImage.style.zIndex = '1';
+				modalImage.style.transition = `transform ${slideTransitionMs}ms ease`;
+				modalImage.style.transform = 'translateX(0)';
+				isSliding = true;
+				modalCarousel.appendChild(incoming);
+
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						if (requestId !== mediaRequestId) {
+							incoming.remove();
+							isSliding = false;
+							return;
+						}
+						modalImage.style.transform = direction > 0 ? 'translateX(-100%)' : 'translateX(100%)';
+						incoming.style.transform = 'translateX(0)';
+					});
+				});
+
+				let finalized = false;
+				const finalize = () => {
+					if (finalized) return;
+					finalized = true;
+					if (requestId !== mediaRequestId) {
+						incoming.remove();
+						isSliding = false;
+						return;
+					}
+					applyImageStyles(modalImage, media);
+					modalImage.src = nextSrc;
+					modalImage.style.transform = '';
+					modalImage.style.transition = '';
+					incoming.remove();
+					isSliding = false;
+				};
+
+				incoming.addEventListener('transitionend', finalize, { once: true });
+				setTimeout(finalize, slideTransitionMs + 80);
+			};
+			preloader.onerror = () => {
+				if (requestId !== mediaRequestId) return;
+				cleanupCarouselClones();
+				applyImageStyles(modalImage, media);
+				modalImage.style.transform = "";
+				modalImage.style.transition = "";
+				modalImage.src = nextSrc;
+				isSliding = false;
+			};
+			preloader.src = nextSrc;
             modalImage.style.display = "block";
         }
 };
@@ -250,8 +365,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	btnClose.addEventListener('click', closeModal);
-	btnPrev.addEventListener('click', () => showMedia(currentImageIndex - 1));
-	btnNext.addEventListener('click', () => showMedia(currentImageIndex + 1));
+	btnPrev.addEventListener('click', () => showMedia(currentImageIndex - 1, -1));
+	btnNext.addEventListener('click', () => showMedia(currentImageIndex + 1, 1));
 
 	modalOverlay.addEventListener('click', (e) => {
 		if (e.target === modalOverlay) closeModal();
@@ -260,8 +375,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.addEventListener('keydown', (e) => {
 		if (!currentProject) return;
 		if (e.key === 'Escape') closeModal();
-		if (e.key === 'ArrowLeft') showMedia(currentImageIndex - 1);
-		if (e.key === 'ArrowRight') showMedia(currentImageIndex + 1);
+		if (e.key === 'ArrowLeft') showMedia(currentImageIndex - 1, -1);
+		if (e.key === 'ArrowRight') showMedia(currentImageIndex + 1, 1);
 	});
 });
 
